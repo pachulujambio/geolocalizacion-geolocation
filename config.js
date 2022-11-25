@@ -27,7 +27,7 @@ function localizarUbicacion() {
       latitud +
       "," +
       longitud +
-      "&key={GOOGLE_API_KEY}"; //Se genera desde google - It is generated from google
+      "&key={GOOGLE_APY_KEY}"; //Se genera desde google - It is generated from google
     Http.open("POST", url);
     Http.send();
     Http.onreadystatechange = (e) => {
@@ -43,11 +43,11 @@ function localizarUbicacion() {
         let respuestaJson = JSON.parse(Http.responseText);
         console.log(respuestaJson);
         let ciudad =
-          respuestaJson["results"][1]["address_components"][4].long_name;
+          respuestaJson["results"][0]["address_components"][4].long_name;
         let provincia =
-          respuestaJson["results"][1]["address_components"][5].long_name;
+          respuestaJson["results"][0]["address_components"][5].long_name;
         let pais =
-          respuestaJson["results"][1]["address_components"][6].long_name;
+          respuestaJson["results"][0]["address_components"][6].long_name;
         //   let cp = respuestaJson["results"][1]["address_components"][7].long_name;
         conexionDesde.textContent =
           "Solicitud enviada desde " +
